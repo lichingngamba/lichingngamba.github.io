@@ -46,6 +46,13 @@ body {
     }
 }
 
+/* .content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+} */
+ /* Existing styles */
 .content {
     max-width: 1100px;
     margin: 0 auto;
@@ -53,7 +60,26 @@ body {
     position: relative;
 }
 
+/* New styles for brighter text */
+.content p {
+    color: #ddf1ef; /* Bright white color */
+    font-weight: 400; /* Normal font weight */
+    line-height: 1.6; /* Adequate line spacing for readability */
+}
+
+.content h1 {
+    color:aliceblue 
+}
+
+.content a {
+    color: #64ffda; /* Bright cyan color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+
 .container {
+    color: #ffffff;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -164,3 +190,38 @@ nav a:hover {
 .resume-download a:hover {
     background: rgba(100, 255, 218, 0.1);
 }
+
+/* Footer Styles */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.social-icons {
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+}
+
