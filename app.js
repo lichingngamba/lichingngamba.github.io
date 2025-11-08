@@ -167,22 +167,7 @@ document.head.appendChild(style);
 //   }, 5000);
 // });
 
-// Add smooth scroll behavior for anchor links
-navLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const targetId = link.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
-    
-    if (targetSection) {
-      const offsetTop = targetSection.offsetTop - 80; // Account for fixed nav
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    }
-  });
-});
+// (removed per-link smooth scroll handlers) — handled by delegated handler below
 
 // Parallax effect on hero section
 window.addEventListener('scroll', () => {
@@ -313,35 +298,57 @@ if (knowMoreBtn) {
   });
 }
 
-// Update nav link click handlers for routing
-navLinks.forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const targetHref = link.getAttribute('href');
-    
-    if (targetHref === '#experience') {
-      navigateToPage('experience');
-    } else {
-      navigateToPage('home', targetHref);
-    }
-  });
-});
+// (removed per-link routing handlers) — use delegated handler below
 
-// Handle footer links
-const footerLinks = document.querySelectorAll('.footer-links a, .footer-social a');
-footerLinks.forEach(link => {
-  const href = link.getAttribute('href');
-  if (href && href.startsWith('#')) {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (href === '#experience') {
-        navigateToPage('experience');
-      } else {
-        navigateToPage('home', href);
-      }
-    });
+// (removed footer per-link handlers) — delegated handler will handle footer anchors as well
+
+// Inject small CSS overrides to avoid decorative layers capturing pointer events
+// and to ensure nav background uses the surface token (avoids invalid rgba(var(...)) usage).
+const _styleOverride = document.createElement('style');
+_styleOverride.setAttribute('data-injected', 'fixes');
+_styleOverride.textContent = `
+  .hero-background, .hero-background * { pointer-events: none !important; }
+  /* Ensure hero particles remain non-interactive (some already set), and hero-background won't block anchors */
+  .hero-particles { pointer-events: none !important; }
+  /* Use surface token for nav background to avoid invalid rgba(var(...)) usages */
+  .nav { background: var(--color-surface) !important; }
+  .nav.scrolled { background: var(--color-surface) !important; }
+`;
+document.head.appendChild(_styleOverride);
+
+// Single delegated handler for all in-page anchors and SPA routing
+document.addEventListener('click', function (e) {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+
+  const href = a.getAttribute('href');
+  if (!href || href === '#') return;
+
+  // Close mobile menu if open
+  try {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+  } catch (err) {
+    // ignore if hamburger/navMenu not present
   }
-});
+
+  // If target is experience page route
+  if (href === '#experience') {
+    e.preventDefault();
+    navigateToPage('experience');
+    return;
+  }
+
+  // Otherwise attempt to scroll to section on home
+  const target = document.querySelector(href);
+  if (target) {
+    e.preventDefault();
+    // Ensure we're on home so sections are visible
+    navigateToPage('home', href);
+    return;
+  }
+  // If no matching element, allow default (may be external or handled elsewhere)
+}, { passive: false });
 
 // Handle browser back/forward buttons
 window.addEventListener('popstate', (e) => {

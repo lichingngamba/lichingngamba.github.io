@@ -2094,42 +2094,51 @@ textarea.form-control {
 
 /* Responsive Timeline */
 @media (max-width: 768px) {
+  /* Move timeline line to the left and convert to single-column stacked layout for small screens */
+  .timeline {
+    padding-left: 64px; /* space for the vertical line and markers */
+  }
+
   .timeline::before {
-    left: 20px;
+    left: 28px; /* fixed left position for the vertical line */
+    transform: translateX(-50%);
   }
 
   .timeline-item {
-    grid-template-columns: 40px 1fr;
-    gap: var(--space-20);
+    display: block;
+    position: relative;
     margin-bottom: 40px;
+    padding-left: 0;
+    grid-template-columns: none;
+    gap: var(--space-20);
   }
 
-  .timeline-item:nth-child(odd) .timeline-content,
-  .timeline-item:nth-child(even) .timeline-content {
-    grid-column: 2;
+  /* Position marker absolutely so it doesn't affect flow */
+  .timeline-marker {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  /* Ensure the card/content sits to the right of the line */
+  .timeline-card {
+    margin-left: 72px;
+    max-width: calc(100% - 72px);
+  }
+
+  .timeline-item .timeline-content {
     text-align: left;
   }
 
-  .timeline-item:nth-child(odd) .timeline-marker,
-  .timeline-item:nth-child(even) .timeline-marker {
-    grid-column: 1;
-  }
-
-  .timeline-item:nth-child(odd) .timeline-card {
-    margin-left: 0;
-  }
-
-  .timeline-card {
-    max-width: 100%;
-  }
-
-  .timeline-marker {
-    justify-content: flex-start;
-  }
-
   .timeline-icon {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
   }
 
   .timeline-icon svg {
