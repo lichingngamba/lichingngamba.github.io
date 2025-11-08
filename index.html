@@ -85,6 +85,12 @@
                 <div class="about-text reveal-item">
                     <p class="about-description">I’m a software engineer specializing in AI and machine learning, with hands-on experience in developing enterprise grade intelligent systems, building and fine-tuning AI models, and creating agentic AI solutions. I’m passionate about exploring emerging technologies and actively contributing to open-source projects.</p>
                     <p class="about-company">Currently working at <span class="highlight">Alcatel Lucent Enterprise</span></p>
+                    <button class="btn btn--primary btn-know-more" id="knowMoreBtn">
+                        View Full Experience
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px;">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
                 </div>
                 <div class="about-highlights">
                     <div class="highlight-card reveal-item">
@@ -293,6 +299,7 @@
                         <span class="skill-pill">Qdrant</span>
                         <span class="skill-pill">smolagent</span>
                         <span class="skill-pill">Multi-Agentic RAG</span>
+                        <span class="skill-pill">OpenAI API</span>
                         <span class="skill-pill">MCP</span>
                     </div>
                 </div>
@@ -304,10 +311,11 @@
                     </div>
                     <div class="skill-list">
                         <span class="skill-pill">Python</span>
-                        <span class="skill-pill">git</span>
+                        <span class="skill-pill">Git</span>
                         <span class="skill-pill">Docker</span>
                         <span class="skill-pill">K8S</span>
                         <span class="skill-pill">AWS EC2</span>
+                        <span class="skill-pill">Kafka</span>
                         <span class="skill-pill">SQL</span>
                     </div>
                 </div>
@@ -324,6 +332,8 @@
                         <span class="skill-pill">Numpy</span>
                         <span class="skill-pill">Pandas</span>
                         <span class="skill-pill">Seaborn</span>
+                        <span class="skill-pill">CNN</span>
+                        <span class="skill-pill">Spacy</span>
                         <span class="skill-pill">Matplotlib</span>
                     </div>
                 </div>
@@ -336,6 +346,7 @@
                     <div class="skill-list">
                         <span class="skill-pill">FastAPI</span>
                         <span class="skill-pill">Uvicorn</span>
+                        <span class="skill-pill">Postgress</span>
                     </div>
                 </div>
             </div>
@@ -438,6 +449,216 @@
             </div>
         </div>
     </footer>
+
+    <!-- Experience Page -->
+    <div id="experiencePage" class="page-container" style="display: none;">
+        <section class="experience-hero">
+            <div class="container">
+                <h1 class="experience-title">Work Experience</h1>
+                <p class="experience-subtitle">My Professional Journey</p>
+                <p class="experience-intro">A timeline of my career progression, showcasing the roles, responsibilities, and technologies that have shaped my expertise in AI/ML and software engineering.</p>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <div class="container">
+                <div class="timeline">
+                    <!-- Experience 1 -->
+                    <div class="timeline-item reveal-item" data-type="work">
+                        <div class="timeline-marker">
+                            <div class="timeline-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="timeline-header">
+                                    <div>
+                                        <h3 class="timeline-title">Software Engineer - AI/ML</h3>
+                                        <p class="timeline-company">Alcatel Lucent Enterprise</p>
+                                        <p class="timeline-location">📍 Bengaluru, Karnataka, India</p>
+                                    </div>
+                                    <div class="timeline-duration">
+                                        <span class="timeline-badge current">Current</span>
+                                        <p class="timeline-date">August 2023 - Present</p>
+                                    </div>
+                                </div>
+                                <ul class="timeline-description">
+                                    <li>Developed and Architected GenAI applications and analytics AI solutions for enterprise network solutions</li>
+                                    <li>Architected and deployed containerized ML models using Docker and Kubernetes on AWS infrastructure</li>
+                                    <li>Implemented Agentic RAG (Retrieval Augmented Generation) systems and LLM-powered applications for internal tools</li>
+                                    <li>Collaborated with cross-functional teams on network technology solutions and AI integration</li>
+                                    <li>Designed a Dynamic Function calling Agent enabling context-aware selection of tools, reducing latency in intent resolution by 30% and optimising the data pipeline for efficient comprehension capabilities for small LM.</li>
+                                </ul>
+                                <div class="timeline-technologies">
+                                    <span class="tech-badge">Python</span>
+                                    <span class="tech-badge">PyTorch</span>
+                                    <span class="tech-badge">Kubernetes</span>
+                                    <span class="tech-badge">Docker</span>
+                                    <span class="tech-badge">AWS EC2</span>
+                                    <span class="tech-badge">LangChain</span>
+                                    <span class="tech-badge">haystack-ai</span>
+                                    <span class="tech-badge">Kafka</span>
+                                    <span class="tech-badge">Transformers</span>
+                                    <span class="tech-badge">FastAPI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience 2 -->
+                    <div class="timeline-item reveal-item" data-type="work">
+                        <div class="timeline-marker">
+                            <div class="timeline-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="timeline-header">
+                                    <div>
+                                        <h3 class="timeline-title">Research and Development Intern</h3>
+                                        <p class="timeline-company">DEBEL-DRDO</p>
+                                        <p class="timeline-location">📍 Bengaluru, Karnataka, India</p>
+                                    </div>
+                                    <div class="timeline-duration">
+                                        <p class="timeline-date">November 2022 - May 2023</p>
+                                    </div>
+                                </div>
+                                <ul class="timeline-description">
+                                    <li>Benchmark transformer architectures (e.g., BioMegatron) on domain-specific corpora</li>
+                                    <li>Achieving a 4% F1 improvement over baseline NER models.</li>
+                                    <li>Fine-tuned large language models via NVIDIA NeMo to enhance medical-entity classification in unstructured clinical reports.</li>
+                                </ul>
+                                <div class="timeline-technologies">
+                                    <span class="tech-badge">Python</span>
+                                    <span class="tech-badge">PyTorch</span>
+                                    <span class="tech-badge">Nvidia NeMo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Experience 3 -->
+                    <div class="timeline-item reveal-item" data-type="work">
+                        <div class="timeline-marker">
+                            <div class="timeline-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="timeline-header">
+                                    <div>
+                                        <h3 class="timeline-title">NLP Research Intern</h3>
+                                        <p class="timeline-company">Rank IT Vision Pvt Ltd</p>
+                                        <p class="timeline-location">📍 Bengaluru, Karnataka, India</p>
+                                    </div>
+                                    <div class="timeline-duration">
+                                        <p class="timeline-date">August 2022 - November 2022</p>
+                                    </div>
+                                </div>
+                                <ul class="timeline-description">
+                                    <li>Developed & Built a Dockerized SSML-driven Text-to-Speech service using Coqui-TTS</li>
+                                    <li>Supporting multilingual inputs and achieving less than 150 ms synthesis latency.systems</li>
+                                    <li>Integrated REST API endpoints and container orchestration for scalable speech-generation workflows.</li>
+                                </ul>
+                                <div class="timeline-technologies">
+                                    <span class="tech-badge">Coqui-TTS</span>
+                                    <span class="tech-badge">Tensorflow</span>
+                                    <span class="tech-badge">Docker</span>
+                                    <span class="tech-badge">Text to speech-generation</span>
+                                    <span class="tech-badge">Git</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Experience 4 - Education -->
+                    <div class="timeline-item reveal-item" data-type="education">
+                        <div class="timeline-marker">
+                            <div class="timeline-icon education">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="timeline-header">
+                                    <div>
+                                        <h3 class="timeline-title">Master of Science in Data Science & Engineering</h3>
+                                        <p class="timeline-company">MS Ramaiah University of Applied Sciences</p>
+                                        <p class="timeline-location">📍 Bengaluru, Karnataka, India</p>
+                                    </div>
+                                    <div class="timeline-duration">
+                                        <p class="timeline-date">August 2021 - May 2023</p>
+                                    </div>
+                                </div>
+                                <ul class="timeline-description">
+                                    <li>Specialized in Artificial Intelligence and Machine Learning with focus on deep learning architectures</li>
+                                    <li>Master's thesis on developing a Computer-Aided Diagnosis and risk stratification of Odentogenic Keratocysts from histopathological images of incisional biopsies</li>
+                                    <li>Published research papers on predictive time series analysis & Automated early detection of Osteoporosis in menopausal women from OPG Image</li>
+                                    <li>Graduated with distinction - CGPA: 9.69/10</li>
+                                </ul>
+                                <div class="timeline-technologies">
+                                    <span class="tech-badge">Machine Learning</span>
+                                    <span class="tech-badge">Deep Learning</span>
+                                    <span class="tech-badge">Natural Language Processing</span>
+                                    <span class="tech-badge">Computer Vision</span>
+                                    <span class="tech-badge">PyTorch</span>
+                                    <span class="tech-badge">Research Methods</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>Lichingngamba Tensubam</h4>
+                        <p>Shaping the future through Agentic AI and compact multimodal intelligence.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <div class="footer-links">
+                            <a href="#home" data-page="home">Home</a>
+                            <a href="#about" data-page="home">About</a>
+                            <a href="#experience" data-page="experience">Experience</a>
+                            <a href="#projects" data-page="home">Projects</a>
+                            <a href="#skills" data-page="home">Skills</a>
+                            <a href="#contact" data-page="home">Contact</a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Connect</h4>
+                        <div class="footer-social">
+                            <a href="https://github.com/lichingngamba" target="_blank" aria-label="GitHub">GitHub</a>
+                            <a href="https://www.linkedin.com/in/lichingngamba-tensubam-436815178" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                            <a href="https://x.com/lichingngamba" target="_blank" aria-label="Twitter">Twitter</a>
+                            <a href="https://huggingface.co/langdai" target="_blank" aria-label="Hugging Face">Hugging Face</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Lichingngamba Tensubam. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script src="app.js"></script>
 </body>

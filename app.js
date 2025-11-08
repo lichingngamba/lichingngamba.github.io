@@ -202,3 +202,179 @@ window.addEventListener('scroll', () => {
 
 // Initial call to set active link on page load
 updateActiveLink();
+
+
+// Multi-page Routing System
+const homePage = document.querySelector('body > nav').nextElementSibling;
+const experiencePage = document.getElementById('experiencePage');
+const knowMoreBtn = document.getElementById('knowMoreBtn');
+
+// Store all home page sections
+const homePageSections = [];
+let currentElement = homePage;
+while (currentElement && currentElement.id !== 'experiencePage') {
+  if (currentElement.tagName === 'SECTION' || currentElement.tagName === 'FOOTER') {
+    homePageSections.push(currentElement);
+  }
+  currentElement = currentElement.nextElementSibling;
+}
+
+// Current page state
+let currentPage = 'home';
+
+// Navigation function
+function navigateToPage(page, scrollToSection = null) {
+  if (page === 'experience') {
+    // Hide home page sections
+    homePageSections.forEach(section => {
+      section.style.display = 'none';
+    });
+    // Show experience page
+    experiencePage.style.display = 'block';
+    currentPage = 'experience';
+    
+    // Update URL
+    window.history.pushState({ page: 'experience' }, '', '#experience');
+    
+    // Update active nav link
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === '#experience') {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Re-trigger reveal animations
+    const experienceRevealItems = experiencePage.querySelectorAll('.reveal-item');
+    experienceRevealItems.forEach(item => {
+      item.classList.remove('revealed');
+      revealObserver.observe(item);
+    });
+  } else {
+    // Show home page sections
+    homePageSections.forEach(section => {
+      section.style.display = '';
+    });
+    // Hide experience page
+    experiencePage.style.display = 'none';
+    currentPage = 'home';
+    
+    // Update URL
+    if (scrollToSection) {
+      window.history.pushState({ page: 'home', section: scrollToSection }, '', scrollToSection);
+    } else {
+      window.history.pushState({ page: 'home' }, '', '#home');
+    }
+    
+    // Scroll to section if specified
+    if (scrollToSection) {
+      const targetSection = document.querySelector(scrollToSection);
+      if (targetSection) {
+        setTimeout(() => {
+          const offsetTop = targetSection.offsetTop - 80;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }, 100);
+        
+        // Update active nav link
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === scrollToSection) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === '#home') {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  }
+  
+  // Close mobile menu
+  hamburger.classList.remove('active');
+  navMenu.classList.remove('active');
+}
+
+// Know More Button Click Handler
+if (knowMoreBtn) {
+  knowMoreBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    navigateToPage('experience');
+  });
+}
+
+// Update nav link click handlers for routing
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetHref = link.getAttribute('href');
+    
+    if (targetHref === '#experience') {
+      navigateToPage('experience');
+    } else {
+      navigateToPage('home', targetHref);
+    }
+  });
+});
+
+// Handle footer links
+const footerLinks = document.querySelectorAll('.footer-links a, .footer-social a');
+footerLinks.forEach(link => {
+  const href = link.getAttribute('href');
+  if (href && href.startsWith('#')) {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (href === '#experience') {
+        navigateToPage('experience');
+      } else {
+        navigateToPage('home', href);
+      }
+    });
+  }
+});
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', (e) => {
+  if (e.state) {
+    if (e.state.page === 'experience') {
+      navigateToPage('experience');
+    } else {
+      navigateToPage('home', e.state.section || '#home');
+    }
+  } else {
+    // Default to home if no state
+    navigateToPage('home', '#home');
+  }
+});
+
+// Initialize based on URL hash
+function initializePage() {
+  const hash = window.location.hash || '#home';
+  if (hash === '#experience') {
+    navigateToPage('experience');
+  } else {
+    // Already on home page by default
+    if (hash !== '#home') {
+      const targetSection = document.querySelector(hash);
+      if (targetSection) {
+        setTimeout(() => {
+          const offsetTop = targetSection.offsetTop - 80;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }
+}
+
+// Initialize page on load
+initializePage();
